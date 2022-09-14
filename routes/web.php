@@ -10,29 +10,22 @@ use App\Http\Livewire\User\UserDashboard;
 use App\Http\Livewire\Admin\UserIndex;
 use App\Http\Livewire\Admin\CreateCandidate;
 
-Route::name('user.')->group(function (){
-    
-    Route::get('/login', UserAuthenticate::class)->name('user_login');
+Route::name('user.')->group(function () {
+    Route::get('/login', UserAuthenticate::class)->middleware('guest')->name('login');
 
-    // Route::middleware('auth:web')->group(function (){
-
-        Route::get('/index', UserDashboard::class)->name('user_index');
-        Route::get('/create', CreateUser::class)->name('user_create');
-    // });
+    Route::middleware('auth:web')->group(function (){
+        Route::get('/', UserDashboard::class)->name('dashboard');
+        Route::get('/create', CreateUser::class)->name('create');
+    });
 });
     
+Route::name('admin.')->prefix('admin')->group(function () {
+    Route::get('/login', AdminAuthenticate::class)->middleware('guest')->name('login');
 
-
-Route::name('admin.')->group(function ()
-{
-    Route::get('/admin/login', AdminAuthenticate::class)->name('admin_login');
-
-    // Route::middleware('auth:admin')->group( function (){
-
-        Route::get('/admin/index', AdminDashboard::class)->name('admin_index');
-        Route::get('/admin/create', CreateAdmin::class)->name('admin_create');
-        Route::get('/admin/users', UserIndex::class)->name('admin_userindex');
-        Route::get('/admin/candidate/create', CreateCandidate::class)->name('create_candidate');
-
-    // });
+    Route::middleware('auth:admin')->group( function (){
+        Route::get('/', AdminDashboard::class)->name('dashboard');
+        Route::get('/create', CreateAdmin::class)->name('create');
+        Route::get('/users', UserIndex::class)->name('userindex');
+        Route::get('/candidate/create', CreateCandidate::class)->name('create_candidate');
+    });
 }); 

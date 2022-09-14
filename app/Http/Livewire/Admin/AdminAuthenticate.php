@@ -16,13 +16,18 @@ class AdminAuthenticate extends Component
         'password' => 'required',
     ];
 
+    public function mount()
+    {
+        // dd(auth()->user());
+    }
+
     public function authenticate()
     {
         $validated = $this->validate();
         // dd($validated);
         if(Auth::guard('admin')->attempt($validated)) {
             session()->regenerate();
-            return redirect()->route('admin.admin_index');
+            return redirect()->route('admin.dashboard');
         } else {
             $this->addError('password', 'Password mismatch');
         }
