@@ -37,6 +37,8 @@ class CreateCandidate extends Component
             'name' => $this->name,
             'dept' => $this->dept,  
         ]);
+
+        session()->flash('success', 'successfully candidate create');
     }
 
     public function render()
