@@ -24,7 +24,7 @@ class CreateCandidate extends Component
             $this->name = $user->name;
             $this->user_id = $user->id;
         }else{
-            session()->flash('message', 'user not found');
+            session()->flash('message', 'Roll Number is Missmatch');
         }
         // dd($this->user_id);   
     }
