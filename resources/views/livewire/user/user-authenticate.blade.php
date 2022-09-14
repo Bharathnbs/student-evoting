@@ -1,4 +1,5 @@
 <div>
+<div>
     @if ($errors->any())
         <div>
             <ul>
@@ -13,4 +14,5 @@
     <label >password</label><br>
     <input type="password" wire:model="password" ><br>
     <button wire:click="authenticate">login</button>
+</div>
 </div>

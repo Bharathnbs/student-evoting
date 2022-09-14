@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\User;
 
 use Livewire\Component;
-use App\Models\Admins;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
-
-class AdminAuthenticate extends Component
+class UserAuthenticate extends Component
 {
     public $email, $password;
 
@@ -20,9 +19,9 @@ class AdminAuthenticate extends Component
     {
         $validated = $this->validate();
         // dd($validated);
-        if(Auth::guard('admin')->attempt($validated)) {
+        if(Auth::guard('web')->attempt($validated)) {
             session()->regenerate();
-            return redirect()->route('admin.admin_index');
+            return redirect()->route('user.user_index');
         } else {
             $this->addError('password', 'Password mismatch');
         }
@@ -33,6 +32,6 @@ class AdminAuthenticate extends Component
 
     public function render()
     {
-        return view('livewire.admin.admin-authenticate')->layout('layouts.admin.authenticate');
+        return view('livewire.user.user-authenticate')->layout('layouts.user.authenticate');
     }
 }
