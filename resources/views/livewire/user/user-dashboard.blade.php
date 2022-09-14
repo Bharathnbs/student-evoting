@@ -1,3 +1,5 @@
 <div>
-    candidate list
+    @foreach($candidates as $candidate)
+        <span>{{ $candidate->name }}</span><br>
+    @endforeach
 </div>
