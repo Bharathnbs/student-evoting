@@ -21,7 +21,7 @@ class UserAuthenticate extends Component
         // dd($validated);
         if(Auth::guard('web')->attempt($validated)) {
             session()->regenerate();
-            return redirect()->route('user.user_index');
+            return redirect()->route('user.dashboard');
         } else {
             $this->addError('password', 'Password mismatch');
         }
