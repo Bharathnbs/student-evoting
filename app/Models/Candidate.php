@@ -20,6 +20,6 @@ class Candidate extends Model
 
     public function voting()
     {
-        return $this->hasMany(Voting::class);
+        return $this->hasMany(Voting::class, 'candidate_id');
     }
 }
