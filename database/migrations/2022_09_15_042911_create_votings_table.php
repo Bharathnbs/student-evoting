@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('voting', function (Blueprint $table) {
+        Schema::dropIfExists('voting');
+        
+        Schema::create('votings', function (Blueprint $table) {
             $table->id();
             $table->integer('candidate_id');
             $table->integer('user_id');
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('voting');
+        Schema::dropIfExists('votings');
     }
 };
