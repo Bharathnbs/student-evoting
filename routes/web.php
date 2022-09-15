@@ -9,6 +9,7 @@ use App\Http\Livewire\Admin\AdminDashboard;
 use App\Http\Livewire\User\UserDashboard;
 use App\Http\Livewire\Admin\UserIndex;
 use App\Http\Livewire\Admin\CreateCandidate;
+use App\Http\Livewire\Admin\ShowCandidate;
 
 Route::name('user.')->group(function () {
     Route::get('/login', UserAuthenticate::class)->middleware('guest')->name('login');
@@ -27,5 +28,6 @@ Route::name('admin.')->prefix('admin')->group(function () {
         Route::get('/create', CreateAdmin::class)->name('create');
         Route::get('/users', UserIndex::class)->name('userindex');
         Route::get('/candidate/create', CreateCandidate::class)->name('create_candidate');
+        Route::get('/candidate', ShowCandidate::class)->name('show_candidate');
     });
 }); 
