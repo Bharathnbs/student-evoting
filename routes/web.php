@@ -30,6 +30,6 @@ Route::name('admin.')->prefix('admin')->group(function () {
         Route::get('/users', UserIndex::class)->name('userindex');
         Route::get('/candidate/create', CreateCandidate::class)->name('create_candidate');
         Route::get('/candidate', ShowCandidate::class)->name('show_candidate');
-        Route::get('/winerreport', WinerReport::class)->name('winer_report');
+        Route::get('/winerreport', WinerReport::class)->name('winner_report');
     });
 }); 
